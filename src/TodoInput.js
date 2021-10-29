@@ -1,10 +1,10 @@
 import { useState } from "react";
 import TodoDisplay from "./TodoDisplay";
-import "./TodoInput.css"
+import "./TodoInput.css";
 const dummyValues = [
-  { value: "Car Wash", key: "1" },
+  { value: "Car Wash", key: 1 },
   { value: "Udemy", key: 2 },
-  { value: "Exercise", id: "3" },
+  { value: "Exercise", key: 3 },
 ];
 const TodoInput = () => {
   const [todoValue, setTodoValue] = useState(dummyValues);
@@ -25,6 +25,13 @@ const TodoInput = () => {
   const onChangeHandler = (event) => {
     setTypeValue(event.target.value);
   };
+  const onDeleteHandler = (keyArray) => {
+    todoValue.map((totVal) => {
+      totVal.key === keyArray && todoValue.splice(todoValue.indexOf(totVal), 1);
+      return true;
+    });
+    console.log(keyArray);
+  };
   return (
     <div>
       <div>
@@ -34,7 +41,7 @@ const TodoInput = () => {
         </form>
       </div>
       <div className="list-display">
-        <TodoDisplay values={todoValue} />
+        <TodoDisplay values={todoValue} deleteList={onDeleteHandler} />
       </div>
     </div>
   );
