@@ -8,7 +8,7 @@ const TodoDisplay = (props) => {
   props.deleteList(keyDeletion);
   return props.values
     .map((totvalue) => (
-      <div className="list-element">
+      <div className="list-elements">
         <p>{totvalue.value}</p>
         <button onClick={() => onDelete(totvalue.key)}>Done</button>
       </div>
