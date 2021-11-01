@@ -1,5 +1,24 @@
-.list-display
-{
-    text-align: -webkit-center;
-    margin-top: 20px;
+.list-display {
+  text-align: -webkit-center;
+  margin-top: 20px;
+}
+form input[type="text"] {
+  border: 2px solid #739d1e;
+  height: 30px;
+  border-radius: 4px;
+}
+form input[type="submit"] {
+  background-color: rgb(255, 68, 68);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  height: 38px;
+  border: none;
+  border-radius: 4px;
+  margin-left: 2px;
+}
+form input[type="submit"]:hover {
+  background: cornflowerblue;
+  color: black;
 }

@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <h1>My Todo</h1>
-      <TodoInput/>
+      <TodoInput />
     </div>
   );
 }

@@ -6,13 +6,12 @@ const TodoDisplay = (props) => {
     setKeyDeletion(onKey);
   };
   props.deleteList(keyDeletion);
-  return props.values
-    .map((totvalue) => (
-      <div className="list-elements">
-        <p>{totvalue.value}</p>
-        <button onClick={() => onDelete(totvalue.key)}>Done</button>
-      </div>
-    ));
+  return props.values.map((totvalue) => (
+    <div className="list-elements">
+      <p>{totvalue.value}</p>
+      <button onClick={() => onDelete(totvalue.key)}>Done</button>
+    </div>
+  ));
 };
 
 export default TodoDisplay;

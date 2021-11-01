@@ -12,14 +12,18 @@ const TodoInput = () => {
 
   const onListHandler = (event) => {
     event.preventDefault();
-    let listValue = {
-      value: typeValue,
-      key: Math.random(),
-    };
-    setTodoValue((prevTodoValue) => {
-      return [listValue, ...prevTodoValue];
-    });
-    setTypeValue("");
+    if (typeValue === "") {
+      alert("Todo Input Can't Be Empty");
+    } else {
+      let listValue = {
+        value: typeValue,
+        key: Math.random(),
+      };
+      setTodoValue((prevTodoValue) => {
+        return [listValue, ...prevTodoValue];
+      });
+      setTypeValue("");
+    }
   };
 
   const onChangeHandler = (event) => {
@@ -36,7 +40,12 @@ const TodoInput = () => {
     <div>
       <div>
         <form onSubmit={onListHandler}>
-          <input type="text" value={typeValue} onChange={onChangeHandler} />
+          <input
+            type="text"
+            value={typeValue}
+            onChange={onChangeHandler}
+            placeholder="Todo Here :)"
+          />
           <input type="submit" />
         </form>
       </div>
