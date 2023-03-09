@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import TodoDisplay from "./TodoDisplay";
 import "./TodoInput.css";
 const dummyValues = [
@@ -8,10 +8,12 @@ const dummyValues = [
 ];
 const TodoInput = () => {
   const [todoValue, setTodoValue] = useState(dummyValues);
-  const [typeValue, setTypeValue] = useState("");
+  const valueInputRef = useRef();
 
   const onListHandler = (event) => {
     event.preventDefault();
+    const typeValue = valueInputRef.current.value;
+
     if (typeValue === "") {
       alert("Todo Input Can't Be Empty");
     } else {
@@ -22,12 +24,8 @@ const TodoInput = () => {
       setTodoValue((prevTodoValue) => {
         return [listValue, ...prevTodoValue];
       });
-      setTypeValue("");
     }
-  };
-
-  const onChangeHandler = (event) => {
-    setTypeValue(event.target.value);
+    valueInputRef.current.value = "";
   };
   const onDeleteHandler = (keyArray) => {
     todoValue.map((totVal) => {
@@ -40,12 +38,7 @@ const TodoInput = () => {
     <div>
       <div>
         <form onSubmit={onListHandler}>
-          <input
-            type="text"
-            value={typeValue}
-            onChange={onChangeHandler}
-            placeholder="Todo Here :)"
-          />
+          <input type="text" placeholder="Todo Here :)" ref={valueInputRef} />
           <input type="submit" />
         </form>
       </div>
